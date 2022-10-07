@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   image: {
     height: 300,
     width: 300,
+    marginBottom:30
   },
   image1Container: {
     justifyContent: "center",
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     alignItems: "center",
     marginBottom: 10,
+    alignSelf:'center'
   },
   buttonText: {
     fontSize: 18,

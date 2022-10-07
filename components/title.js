@@ -10,7 +10,7 @@ const Title = () => {
 export default Title;
 const styles = StyleSheet.create({
   Heading: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: "bold",
     color: "red",
     textAlign: "center",

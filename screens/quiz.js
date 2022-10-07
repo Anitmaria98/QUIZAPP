@@ -1,7 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Quiz = ({ navigation }) =>{
+const Quiz = ({ navigation }) => {
+  const [questions, setQuestions] = useState("");
+  //const [ques, setQues] = useState(0);
+  const getQuiz = async () => {
+    const url =
+      "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple";
+    const res = await fetch(url);
+    const data = await res.json();
+    setQuestions(data.results);
+  };
+  useEffect(() => {
+    getQuiz();
+  }, []);
+
   return (
     <View style={styles.container}>
       {questions && (
@@ -11,16 +24,16 @@ const Quiz = ({ navigation }) =>{
           </View>
           <View style={styles.options}>
             <TouchableOpacity style={styles.optionButton}>
-              <Text style={styles.option}> Option1 </Text>
+              <Text style={styles.option}> Option A </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionButton}>
-              <Text style={styles.option}> Option2 </Text>
+              <Text style={styles.option}> Option B </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionButton}>
-              <Text style={styles.option}> Option3 </Text>
+              <Text style={styles.option}> Option C </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionButton}>
-              <Text style={styles.option}> Option4 </Text>
+              <Text style={styles.option}> Option D </Text>
             </TouchableOpacity>
           </View>
           <View style={styles.bottom}>
@@ -50,7 +63,7 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingVertical: 20,
     height: "100%",
-    backgroundColor:'#D8E2DC'
+    backgroundColor: "#D8E2DC",
   },
   top: {
     marginVertical: 16,
@@ -93,7 +106,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "600",
   },
-  // parent: {
-  //   height: "100%",
-  // },
+  parent: {
+    height: "100%",
+  },
 });
